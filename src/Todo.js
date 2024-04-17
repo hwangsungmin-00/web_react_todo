@@ -31,6 +31,11 @@ const Todo = (props) =>{
         editItem();
     }
 
+    const checkboxEventHandler = (e) => {
+        item.done = e.target.checked;
+        editItem();
+    }
+
     //let output= <div className="Todo"> {/* 주석 */}
     //                <input type="checkbox" id="todo0" name="todo0" value="todo0"></input>
     //                <label for="todo0">{item.id}{item.title}</label>
@@ -48,7 +53,8 @@ const Todo = (props) =>{
     //);
     return(
         <ListItem>
-            <Checkbox checked={item.done} />
+            <Checkbox checked={item.done} 
+                onChange={ checkboxEventHandler }/>
             <ListItemText>
                 <InputBase
                     inputProps={{
