@@ -17,8 +17,9 @@ const Todo = (props) =>{
 
     // turnOnReadOnly 함수 작성 
     const turnOnReadOnly=(e)=>{
-        if(e.key=="Enter"){
+        if(e.key=="Enter" && readOnly==false){
             setReadOnly(true);
+            editItem(item);
         }
     }
 
@@ -27,14 +28,13 @@ const Todo = (props) =>{
     };
 
     const editEventHandler = (e)=>{
-        item.title = e.target.value;
-        editItem();
-    }
+        setItem({...item, title: e.target.value});
+    };
 
     const checkboxEventHandler = (e) => {
         item.done = e.target.checked;
-        editItem();
-    }
+        editItem(item);
+    };
 
     //let output= <div className="Todo"> {/* 주석 */}
     //                <input type="checkbox" id="todo0" name="todo0" value="todo0"></input>
