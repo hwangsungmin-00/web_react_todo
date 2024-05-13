@@ -4,7 +4,6 @@ import React, {useState, useEffect} from 'react';
 import { Container, List, Paper } from "@mui/material";
 import AddTodo from './AddTodo';
 import {call} from "./service/ApiService"
-
 function App() {
 
   const [items, setItems] = useState([]);
@@ -27,8 +26,9 @@ function App() {
     .then((response)=>setItems(response.data));
   };
 
-  const editItem = () =>{
-    setItems([...items]);
+  const editItem = (item) => {
+    call("/todo", "PUT", item)
+      .then((response) => setItems(response.data));
   };
 
 
